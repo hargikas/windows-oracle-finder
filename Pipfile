@@ -1,0 +1,27 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+pefile = "*"
+logzero = "*"
+"pywin32" = "*"
+
+
+[dev-packages]
+
+rope = "*"
+pylint = "*"
+"autopep8" = "*"
+twine = "*"
+setuptools = "*"
+wheel = "*"
+
+
+[requires]
+
+python_version = "3.6"
