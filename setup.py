@@ -1,11 +1,12 @@
 import setuptools
+import datetime
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="windows-oracle-finder", 
-    version="0.2.1",
+    name="windows-oracle-finder",
+    version=datetime.datetime.now().strftime("%Y.%m.%d"),
     author="Charalampos Gkikas",
     author_email="hargikas@gmail.com",
     description="A small package for windows machines to find where the installation of oracle client resides.",
@@ -33,15 +34,15 @@ setuptools.setup(
     install_requires=['pefile', 'logzero', 'pywin32'],
     keywords='oracle windows client instantclient',
     project_urls={
-        #'Documentation': 'https://packaging.python.org/tutorials/distributing-packages/',
-        #'Funding': 'https://donate.pypi.org',
-        #'Say Thanks!': 'http://saythanks.io/to/example',
+        # 'Documentation': 'https://packaging.python.org/tutorials/distributing-packages/',
+        # 'Funding': 'https://donate.pypi.org',
+        # 'Say Thanks!': 'http://saythanks.io/to/example',
         'Source': 'https://github.com/hargikas/windows-oracle-finder/',
         'Tracker': 'https://github.com/hargikas/windows-oracle-finder/issues',
     },
     entry_points={
-    'console_scripts': [
-        'find_oracle=find_oracle:__main__',
-    ],
-},
+        'console_scripts': [
+            'find_oracle=find_oracle:__main__',
+        ],
+    },
 )
