@@ -36,7 +36,7 @@ setuptools.setup(
     project_urls={
         # 'Documentation': 'https://packaging.python.org/tutorials/distributing-packages/',
         # 'Funding': 'https://donate.pypi.org',
-        # 'Say Thanks!': 'http://saythanks.io/to/example',
+        'Say Thanks!': 'https://saythanks.io/to/hargikas%40gmail.com',
         'Source': 'https://github.com/hargikas/windows-oracle-finder/',
         'Tracker': 'https://github.com/hargikas/windows-oracle-finder/issues',
     },
