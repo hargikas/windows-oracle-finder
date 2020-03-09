@@ -21,7 +21,3 @@ twine = "*"
 setuptools = "*"
 wheel = "*"
 
-
-[requires]
-
-python_version = "3.6"
