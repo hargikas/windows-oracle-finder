@@ -40,7 +40,6 @@ def main():
     args = parser.parse_args()
 
     if args.refresh:
-        print("lala")
         td = datetime.timedelta(seconds=-1)
         find_oracle.cached_installations(
             modified_cache_td=td, accessed_cache_td=td)
