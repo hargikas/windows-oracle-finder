@@ -8,7 +8,9 @@ from . import client, finder
 def _clean_and_add_env_path(add_path):
     cleaned_path = []
     # Clean the already defined path
-    for c_path in os.environ['PATH'].split(';'):
+    abs_path = [os.path.abspath(x) for x in os.environ['PATH'].split(';')]
+
+    for c_path in abs_path:
         if (c_path and (c_path.casefold() not in [x.casefold() for x in cleaned_path])):
             cleaned_path.append(c_path)
 

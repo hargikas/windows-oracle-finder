@@ -42,8 +42,9 @@ def find_installations():
 
 
 @functools.lru_cache(maxsize=None)
-def cached_installations():
-    cache_obj = cache.OracleInstallations()
+def cached_installations(modified_cache_td=None, accessed_cache_td=None):
+    cache_obj = cache.OracleInstallations(
+        modified_td=modified_cache_td, accessed_td=accessed_cache_td)
     result = cache_obj.get_installations()
     return result
 
