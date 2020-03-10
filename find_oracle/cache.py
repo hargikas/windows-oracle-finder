@@ -31,7 +31,6 @@ class OracleInstallations(object):
             kwargs, 'secret', bytes(getpass.getuser(), 'utf-8'))
         self.filename = kwargs_safe_get(kwargs, 'filename', os.path.join(
             tempfile.gettempdir(), 'oracle_installations_cache.pkl'))
-        print(self.modified_td)
 
     def _load_data(self):
         valid_file = False
