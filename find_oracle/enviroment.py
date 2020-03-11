@@ -36,4 +36,6 @@ def safely_set_oracle_path(possible_path):
         if oracle_path:
             logger.debug("Found ORACLE_PATH: %s [Version: %s]" % (
                 oracle_path, oracle_version))
+        else:
+            logger.warning("Continuing without adding to PATH enviroment variable")
     _clean_and_add_env_path(oracle_path)
