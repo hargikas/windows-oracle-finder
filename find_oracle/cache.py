@@ -13,13 +13,24 @@ import tempfile
 from . import finder
 
 
+def kwargs_safe_get(input_dict, key, default_value):
+    """Helper function for managing None in keyword arguments"""
+    result = input_dict.get(key, default_value)
+    if result is None:
+        result = default_value
+    return result
+
+
 class OracleInstallations(object):
-    def __init__(self):
-        self.modified_td = datetime.timedelta(days=2)
-        self.accessed_td = datetime.timedelta(hours=8)
-        self.secret = bytes(getpass.getuser(), 'utf-8')
-        self.filename = os.path.join(
-            tempfile.gettempdir(), 'oracle_installations_cache.pkl')
+    def __init__(self, *args, **kwargs):
+        self.modified_td = kwargs_safe_get(
+            kwargs, 'modified_td', datetime.timedelta(days=2))
+        self.accessed_td = kwargs_safe_get(
+            kwargs, 'accessed_td', datetime.timedelta(hours=8))
+        self.secret = kwargs_safe_get(
+            kwargs, 'secret', bytes(getpass.getuser(), 'utf-8'))
+        self.filename = kwargs_safe_get(kwargs, 'filename', os.path.join(
+            tempfile.gettempdir(), 'oracle_installations_cache.pkl'))
 
     def _load_data(self):
         valid_file = False

@@ -8,7 +8,9 @@ from . import client, finder
 def _clean_and_add_env_path(add_path):
     cleaned_path = []
     # Clean the already defined path
-    for c_path in os.environ['PATH'].split(';'):
+    abs_path = [os.path.abspath(x) for x in os.environ['PATH'].split(';')]
+
+    for c_path in abs_path:
         if (c_path and (c_path.casefold() not in [x.casefold() for x in cleaned_path])):
             cleaned_path.append(c_path)
 
@@ -34,4 +36,6 @@ def safely_set_oracle_path(possible_path):
         if oracle_path:
             logger.debug("Found ORACLE_PATH: %s [Version: %s]" % (
                 oracle_path, oracle_version))
+        else:
+            logger.warning("Continuing without adding to PATH enviroment variable")
     _clean_and_add_env_path(oracle_path)
