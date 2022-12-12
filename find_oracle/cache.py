@@ -1,5 +1,3 @@
-__PICKLE_FORMAT__ = '2.0'
-
 import datetime
 import getpass
 import hashlib
@@ -11,6 +9,9 @@ import pickletools
 import tempfile
 
 from . import finder
+
+__PICKLE_FORMAT__ = '3.0'
+OLDEST_PICKLE_PROTOCOL = 1
 
 
 def kwargs_safe_get(input_dict, key, default_value):
@@ -48,14 +49,14 @@ class OracleInstallations(object):
 
         if not valid_file:
             self.cache = {'modified': now, 'accessed': now,
-                          'data': None, 'signed': b''}
+                          'data': None, 'signed': ''}
 
     def _save_data(self):
         try:
             self.cache['signed'] = self._sign_data()
 
             # Try to make a shorter file
-            data = pickle.dumps(self.cache, protocol=pickle.HIGHEST_PROTOCOL)
+            data = pickle.dumps(self.cache, protocol=OLDEST_PICKLE_PROTOCOL)
             opt_data = pickletools.optimize(data)
 
             # Write Everything
